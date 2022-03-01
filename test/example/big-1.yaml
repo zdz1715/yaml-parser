@@ -3,6 +3,7 @@ tag:
   - 111
   - 222
 ---
+# +parser:tag=sss
 name: big-1_2
 tag:
   - 333
