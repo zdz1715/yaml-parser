@@ -31,7 +31,8 @@ func Split(filepath string) ([]string, error) {
 		return files, err
 	}
 	ext := path.Ext(filepath)
-	filenamePrefix := strings.TrimRight(filepath, ext)
+	filenamePrefix := strings.TrimSuffix(filepath, ext)
+	fmt.Println(ext, filepath, filenamePrefix)
 	yamlSlice := strings.Split(string(ymlByte), "---")
 	for k, v := range yamlSlice {
 		str := strings.TrimSpace(v)
