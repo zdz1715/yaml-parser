@@ -12,8 +12,8 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "yml-parser",
-	Short: "Deal with the cutting and merging of YML files",
+	Use:   "yaml-parser",
+	Short: "Deal with the cutting and merging of YAML files",
 	//Long: ``,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:

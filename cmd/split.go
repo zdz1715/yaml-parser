@@ -3,12 +3,12 @@ package cmd
 import (
 	"errors"
 	"github.com/spf13/cobra"
-	"github.com/zdz1715/yml-parser/pkg/yml"
+	"github.com/zdz1715/yaml-parser/pkg/yml"
 )
 
 var splitCmd = &cobra.Command{
 	Use:   "split file...",
-	Short: "Dividing a YML file into multiple",
+	Short: "Dividing a YAML file into multiple",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if err := validate(args); err != nil {
 			return err

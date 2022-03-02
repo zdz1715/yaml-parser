@@ -1,4 +1,4 @@
-module github.com/zdz1715/yml-parser
+module github.com/zdz1715/yaml-parser
 
 go 1.17
 

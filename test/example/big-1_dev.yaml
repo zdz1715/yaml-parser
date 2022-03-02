@@ -1,8 +1,3 @@
-name: big-1_1
-tag:
-  - 111
-  - 222
----
 # +parser:tag=dev
 name: big-1_2
 tag:
