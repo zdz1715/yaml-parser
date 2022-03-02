@@ -1,5 +1,5 @@
-# yml-parser
-处理yml文件的切割、合并等
+# yaml-parser
+处理`yaml`、`yml`文件的切割、合并等
 
 # 使用
 
@@ -84,7 +84,7 @@ tag:
   - one
   - two
 ```
-- `big-2_0.yaml`
+- `big-2_1.yaml`
 ```yaml
 name: big-2_2
 tag:
