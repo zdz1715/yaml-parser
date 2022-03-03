@@ -22,30 +22,33 @@ func Parse(fileContent, key string) []ruleValue {
 	ruleKey := RulePrefix + key
 	fields := strings.Fields(fileContent)
 	keyLen := len(ruleKey)
-	str := ""
+	lineSlice := make([]string, 0)
+	ruleValueSlice := make([]ruleValue, 0)
 	for _, v := range fields {
 		if i := strings.Index(v, ruleKey); i >= 0 {
-			str = v[i+keyLen:]
+			lineSlice = append(lineSlice, v[i+keyLen:])
 		}
 	}
-	if len(str) == 0 {
-		return []ruleValue{}
+	if len(lineSlice) == 0 {
+		return ruleValueSlice
 	}
-	strArr := strings.Split(str, RuleSeparator)
-	ruleValueSlice := make([]ruleValue, 0, len(strArr))
-	for _, v := range strArr {
-		strTemp := strings.Split(v, RuleValueSeparator)
-		if len(strTemp) >= 2 {
-			ruleValueSlice = append(ruleValueSlice, ruleValue{
-				Key:   strTemp[0],
-				Value: strTemp[1],
-			})
-		} else {
-			ruleValueSlice = append(ruleValueSlice, ruleValue{
-				Key:   "",
-				Value: strTemp[0],
-			})
+	for _, line := range lineSlice {
+		strArr := strings.Split(line, RuleSeparator)
+		for _, v := range strArr {
+			strTemp := strings.Split(v, RuleValueSeparator)
+			if len(strTemp) >= 2 {
+				ruleValueSlice = append(ruleValueSlice, ruleValue{
+					Key:   strTemp[0],
+					Value: strTemp[1],
+				})
+			} else {
+				ruleValueSlice = append(ruleValueSlice, ruleValue{
+					Key:   "",
+					Value: strTemp[0],
+				})
+			}
 		}
 	}
+
 	return ruleValueSlice
 }
