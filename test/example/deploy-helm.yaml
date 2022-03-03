@@ -1,0 +1,13 @@
+# +parser:tag=stage
+# +parser:param:namespace=default,release_name=app-1
+name: deploy-helm-stage
+tag:
+  - 111
+  - 222
+---
+# +parser:tag=dev
+# +parser:param:namespace=default-1,release_name=app-2
+name: deploy-helm-dev
+tag:
+  - 333
+  - 444

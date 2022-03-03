@@ -1,0 +1,5 @@
+# +parser:tag=stage
+name: deploy-helm-stage
+tag:
+  - 111
+  - 222
