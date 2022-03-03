@@ -1,0 +1,5 @@
+# +parser:param:namespace=default-1,release_name=app-2
+name: deploy-helm-1
+tag:
+  - 333
+  - 444

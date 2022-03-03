@@ -1,5 +1,0 @@
-# +parser:tag=dev
-name: deploy-helm-dev
-tag:
-  - 333
-  - 444

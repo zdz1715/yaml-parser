@@ -5,9 +5,8 @@ tag:
   - 111
   - 222
 ---
-# +parser:tag=dev
 # +parser:param:namespace=default-1,release_name=app-2
-name: deploy-helm-dev
+name: deploy-helm-1
 tag:
   - 333
   - 444
