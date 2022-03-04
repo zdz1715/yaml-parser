@@ -19,6 +19,20 @@ GOFLAGS    :=
 # Rebuild the binary if any of these files change
 SRC := $(shell find . -type f -name '*.go' -print) go.mod go.sum
 
+# Required for globs to work correctly
+
+GIT_COMMIT = $(shell git rev-parse HEAD)
+GIT_SHA    = $(shell git rev-parse --short HEAD)
+GIT_TAG    = $(shell git describe --tags --abbrev=0 --exact-match 2>/dev/null)
+GIT_DIRTY  = $(shell test -n "`git status --porcelain`" && echo "dirty" || echo "clean")
+
+BUILDDATE = $(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
+
+LDFLAGS += -X github.com/zdz1715/yaml-parser/pkg/version.version=${GIT_TAG}
+LDFLAGS += -X github.com/zdz1715/yaml-parser/pkg/version.gitCommit=${GIT_COMMIT}
+LDFLAGS += -X github.com/zdz1715/yaml-parser/pkg/version.gitTreeState=${GIT_DIRTY}
+LDFLAGS += -X github.com/zdz1715/yaml-parser/pkg/version.buildDate=${BUILDDATE}
+
 .PHONY: all
 all: build
 
