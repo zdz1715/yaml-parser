@@ -1,4 +1,5 @@
 # +parser:tag=stage
+# +parser:tag=prod
 # +parser:param:namespace=default,release_name=app-1
 name: deploy-helm-stage
 tag:

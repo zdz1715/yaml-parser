@@ -32,25 +32,31 @@ func Split(filepath string) ([]string, error) {
 	yamlSlice := strings.Split(yamlContent, "---")
 	for k, v := range yamlSlice {
 		str := strings.TrimSpace(v)
-		tag := parserTag(v)
-		if tag == "" {
-			tag = strconv.Itoa(k)
+		tags := parserTag(v, k)
+		for _, tag := range tags {
+			filename := fmt.Sprintf("%s_%s%s", filenamePrefix, tag, ext)
+			if err := ioutil.WriteFile(filename, []byte(str), 0755); err != nil {
+				return files, err
+			}
+			files = append(files, filename)
 		}
-		filename := fmt.Sprintf("%s_%s%s", filenamePrefix, tag, ext)
-		if err := ioutil.WriteFile(filename, []byte(str), 0755); err != nil {
-			return files, err
-		}
-		files = append(files, filename)
 	}
 	return files, nil
 }
 
-func parserTag(str string) string {
+func parserTag(str string, k int) []string {
+	var strs []string
 	strSlice := Parse(str, "tag=")
-	if len(strSlice) > 0 && strSlice[0].Value != "" {
-		return strSlice[0].Value
+	for _, kv := range strSlice {
+		if kv.Value != "" {
+			strs = append(strs, kv.Value)
+		}
 	}
-	return ""
+
+	if len(strs) == 0 {
+		return []string{strconv.Itoa(k)}
+	}
+	return strs
 }
 
 func ParseParam(filepath string, key string) error {

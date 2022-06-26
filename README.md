@@ -34,6 +34,7 @@ Use "yaml-parser [command] --help" for more information about a command.
 `deploy-helm.yaml`（例子）
 ```yaml
 # +parser:tag=stage
+# +parser:tag=prod
 # +parser:param:namespace=default,release_name=app-1
 name: deploy-helm-stage
 tag:
@@ -50,11 +51,22 @@ tag:
 > 兼容yaml文件的分隔符`---`
 ```shell
 $ yaml-parser split deploy-helm.yaml
-[deploy-helm.yaml] deploy-helm_stage.yaml deploy-helm_1.yaml
+[deploy-helm.yaml] deploy-helm_stage.yaml deploy-helm_prod.yaml deploy-helm_1.yaml
 ```
 - `deploy-helm_stage.yaml`
 ```yaml
 # +parser:tag=stage
+# +parser:tag=prod
+# +parser:param:namespace=default,release_name=app-1
+name: deploy-helm-stage
+tag:
+  - 111
+  - 222
+```
+- `deploy-helm_prod.yaml`
+```yaml
+# +parser:tag=stage
+# +parser:tag=prod
 # +parser:param:namespace=default,release_name=app-1
 name: deploy-helm-stage
 tag:
