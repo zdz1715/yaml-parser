@@ -48,7 +48,7 @@ tag:
   - 444
 ```
 ### 分割`split`
-> 兼容yaml文件的分隔符`---`
+> 依赖于yaml文件的分隔符`---`
 ```shell
 $ yaml-parser split deploy-helm.yaml
 [deploy-helm.yaml] deploy-helm_stage.yaml deploy-helm_prod.yaml deploy-helm_1.yaml
